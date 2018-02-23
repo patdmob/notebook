@@ -1,5 +1,7 @@
 # Bash
 
+Still a work in progress, hope to have the content complete and well formatted soon!
+
 - [Shortcuts](#shortcuts)
 - [Command Search/Help](#command-searchhelp)
 - [Basic Commands](#basic-commands)
@@ -29,11 +31,11 @@ history \<number>	| prints a list of commands you've typed (stores 1000 unique c
 ### Examples
 
 ```bash
-    help echo        # Prints help documentation for internal command 'echo'
-    man echo         # Displays manual page for command 'echo' in 'less'
-    whatis echo      # Result: echo(1)  - write arguments to the standard output
-    which bash       # Result: /bin/bash
-    history 2        # Prints the last two commands
+help echo        # Prints help documentation for internal command 'echo'
+man echo         # Displays manual page for command 'echo' in 'less'
+whatis echo      # Result: echo(1)  - write arguments to the standard output
+which bash       # Result: /bin/bash
+history 2        # Prints the last two commands
 ```
 
 ## Basic Commands
@@ -64,19 +66,19 @@ nano \<file> | basic text editor
 ### Examples
 
 ```bash
-    ls -al                      # List all contents in current directory
-    ls ~                        # Show contents of home directory ('~' = home directory alias)
-    cd Downloads/               # Change current directory to 'Downloads'
-    cd ..                       # Change to parent directory ('..' = parent, '.' = current directory)
-    touch myfile                # Create an empty file called myfile
-    touch -t 05231600 myfile    # Sets the timestamp for myfile to 4 p.m., May 23th (05 23 1600).
-    mkdir sampledir             # Creates 'sampledir' in current directory
-    rm -rf                      # Forcefully and recursively delete contents from a directory
-    cat file1 file2 > file3     # Concatinates contents from file1 and file2 into file3
-    cat file1 - file2           # Prints file1, prints input from stdin until EOF (`^D'), then prints file2
+ls -al                      # List all contents in current directory
+ls ~                        # Show contents of home directory ('~' = home directory alias)
+cd Downloads/               # Change current directory to 'Downloads'
+cd ..                       # Change to parent directory ('..' = parent, '.' = current directory)
+touch myfile                # Create an empty file called myfile
+touch -t 05231600 myfile    # Sets the timestamp for myfile to 4 p.m., May 23th (05 23 1600).
+mkdir sampledir             # Creates 'sampledir' in current directory
+rm -rf                      # Forcefully and recursively delete contents from a directory
+cat file1 file2 > file3     # Concatinates contents from file1 and file2 into file3
+cat file1 - file2           # Prints file1, prints input from stdin until EOF (`^D'), then prints file2
 ```
 
-## FILE MANIPULATION UTILITIES  
+## File/Text Manipulation  
 sed - popular stream editor used to filter/substitute text in files and data streams  
 awk   - typically used as a data extraction and reporting tool  
 sort  - sorts lines (-r for descending) (-k 3 by third field) (-u returns uniq values after sort)  
@@ -86,7 +88,7 @@ join  - merge two files with similar columns without repeating the data
 split - breaks a file into 1000 line segments  
 cut   - extract specific columns from column-based files   
   
-## TEXT SEARCH/MANIPULATION  
+## Text/Search Manipulation 
 grep    - print lines matching pattern (-v not match)(-C context above and below)  
 strings - extracts all printable content from an argument file list  
 tr      - text utility (translate)   
@@ -95,12 +97,12 @@ wc 	- word count displays lines, words, and characters (-l lines) (-c bytes) (-w
 ### Examples
 
 ```bash
-    tr '{}' '()' < inputfile > outputfile           # Translate braces into parenthesis    
-    echo "This is for testing" | tr [:space:] '\t'	# Translate white-space to tabs    
-    echo "This   is a    test" | tr -s [:space:]    # Squeeze repetition of characters using -s  
+tr '{}' '()' < inputfile > outputfile           # Translate braces into parenthesis    
+echo "This is for testing" | tr [:space:] '\t'	# Translate white-space to tabs    
+echo "This   is a    test" | tr -s [:space:]    # Squeeze repetition of characters using -s  
 ```
 
-## USER RELATED CMDS  
+## User Related Commands 
 sudo        - enter command as root  
 sudo -s     - change to root account (recommended over su)  
 su \<user>   - change to \<user> account  
@@ -109,12 +111,12 @@ users 	    - shows active users
 id	    - gives all pertinent information about user account  
 whoami	    - returns the current user  
 
-## PIPELINES  
+## Pipelines 
 |    - pipe the standard output of one command into another command's standard input  
 |&   - the stderr and stdout of cmd1 are connected to cmd2 stdin; shorthand for 2>&1 |  
   
   
-## NETWORKING RELATED CMDS  
+## Networking Related Commands 
 arp       - address resolution display and control  
 whois     - Internet domain name and network number directory service  
 dig 	  - dig	Tests DNS workings. A good replacement for host and nslookup.  
@@ -123,20 +125,20 @@ ifconfig  - configure network interface parameters
 ping      - send ICMP ECHO_REQUEST packets to network hosts  
 netstat   - Displays all active connections and routing tables  
   
-## TRANSFERING FILES
+## Transfering Files
 ssh	- secure shell  
 sftp	- secure file transfer  
 rsync	- efficiently transfer and sync files across computers by checking timestamp and size  
 scp	- secure copy  
   
 
-## WEB
+## Web
 wget  
 curl  
   
 Advanced bash commands:  
   
-## INTERACTION 
+## Interaction
 read \<varname>  - requests input from the user and stores in varname  
   
   
@@ -170,7 +172,7 @@ $#		- Number of arguments
   
 ### COMMAND SUBSTITUTION 
 No matter the method, the innermost command will be executed in a newly launched shell environment, and the standard output of the shell will be inserted where the command substitution was done.    
-`<cmd>`     
+\`\<cmd>`     
 $(\<cmd>)     
 Both of these methods enable command substitution; however, the $( ) method allows command nesting. New scripts should always use of this more modern method.    
 ls /lib/modules/$(uname -r)/    
@@ -188,9 +190,9 @@ export with no arguments will give a list of all currently exported environment 
 ### FUNCTIONS  
 
 ```bash
-    function_name () {  
-       command...  
-    }  
+function_name () {  
+    command...  
+}  
 ```
 
 The first argument can be referred to as $1, the second as $2, etc.  
@@ -198,15 +200,15 @@ To call a function, treat it like a new command
 \# Functions (must be defined before use)  
 
 ```bash
-    func1() {  
-    echo " This message is from function 1"  
-    }  
-    func2() {  
-    echo " This message is from function 2"   
-    }  
-    echo "Enter a number, 1 or 2"  
-    read n  
-    func$n  
+func1() {  
+echo " This message is from function 1"  
+}  
+func2() {  
+echo " This message is from function 2"   
+}  
+echo "Enter a number, 1 or 2"  
+read n  
+func$n  
 ```
 
 ### FLOW CONTROL  
@@ -214,23 +216,23 @@ if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
 A more general definition is:  
 
 ```bash
-    if [[ condition ]] 	# square brackets are used to delineate the test condition  
-    then  
-        statements  
-    elif [[ condition ]]  
-    then  
-        statements  
-    else  
-        statements  
-    fi  
-  
-    file=$1  
-    if [ -f file ]		# one set of square brackets will work but two is prefered  
-    then  
-    echo -e "The $file exists"  
-    else  
-    echo -e "The $file does not exist"  
-    fi  
+if [[ condition ]] 	# square brackets are used to delineate the test condition  
+then  
+    statements  
+elif [[ condition ]]  
+then  
+    statements  
+else  
+    statements  
+fi  
+
+file=$1  
+if [ -f file ]		# one set of square brackets will work but two is prefered  
+then  
+echo -e "The $file exists"  
+else  
+echo -e "The $file does not exist"  
+fi  
 ```
 
 ### CONDITIONALS SYNTAX  
