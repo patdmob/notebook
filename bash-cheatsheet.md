@@ -115,12 +115,12 @@ whoami	    - returns the current user
   
   
 ## NETWORKING RELATED CMDS  
-arp       - address resolution display and control
-whois     - Internet domain name and network number directory service
+arp       - address resolution display and control  
+whois     - Internet domain name and network number directory service  
 dig 	  - dig	Tests DNS workings. A good replacement for host and nslookup.  
 ipconfig  - newer utility of ifconfig, may not be installed by default   
-ifconfig  - configure network interface parameters
-ping      - send ICMP ECHO_REQUEST packets to network hosts
+ifconfig  - configure network interface parameters  
+ping      - send ICMP ECHO_REQUEST packets to network hosts  
 netstat   - Displays all active connections and routing tables  
   
 ## TRANSFERING FILES:  
