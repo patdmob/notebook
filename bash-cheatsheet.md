@@ -179,7 +179,7 @@ ls /lib/modules/$(uname -r)/
 environment variables: HOME, PATH, HOST, etc.    
 foo=bar		# no space!    
 echo $foo    
->  bar    
+\>  bar    
 By default, the variables created within a script are local. To make them global (environment variables) use export:    
 export VAR=value    
 VAR=value ; export VAR    
