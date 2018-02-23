@@ -123,20 +123,20 @@ ifconfig  - configure network interface parameters
 ping      - send ICMP ECHO_REQUEST packets to network hosts  
 netstat   - Displays all active connections and routing tables  
   
-## TRANSFERING FILES:  
+## TRANSFERING FILES
 ssh	- secure shell  
 sftp	- secure file transfer  
 rsync	- efficiently transfer and sync files across computers by checking timestamp and size  
 scp	- secure copy  
   
-  
-## WEB:  
+
+## WEB
 wget  
 curl  
   
 Advanced bash commands:  
   
-## INTERACTION:  
+## INTERACTION 
 read \<varname>  - requests input from the user and stores in varname  
   
   
@@ -161,21 +161,21 @@ $	- Indicates what follows is an environment variable
 exit    - used to set the return value; 0 for success, non-zero for failure    
 echo $? - used to check the return value after a program has run     
   
-### SCRIPT PARAMETERS (arguments):  
+### SCRIPT PARAMETERS (arguments) 
 $0		- Script name    
 $1		- First parameter    
 $2, $3, etc.	- Second, third parameter, etc.    
 $*		- All parameters    
 $#		- Number of arguments    
   
-### COMMAND SUBSTITUTION:  
+### COMMAND SUBSTITUTION 
 No matter the method, the innermost command will be executed in a newly launched shell environment, and the standard output of the shell will be inserted where the command substitution was done.    
 `<cmd>`     
 $(\<cmd>)     
 Both of these methods enable command substitution; however, the $( ) method allows command nesting. New scripts should always use of this more modern method.    
 ls /lib/modules/$(uname -r)/    
   
-### VARIABLES:    
+### VARIABLES    
 environment variables: HOME, PATH, HOST, etc.    
 foo=bar		# no space!    
 echo $foo    
@@ -185,7 +185,7 @@ export VAR=value
 VAR=value ; export VAR    
 export with no arguments will give a list of all currently exported environment variables    
   
-### FUNCTIONS:  
+### FUNCTIONS  
 
 ```bash
     function_name () {  
@@ -209,7 +209,7 @@ To call a function, treat it like a new command
     func$n  
 ```
 
-### FLOW CONTROL:  
+### FLOW CONTROL  
 if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi  
 A more general definition is:  
 
@@ -233,8 +233,8 @@ A more general definition is:
     fi  
 ```
 
-### CONDITION SYNTAX:  
-#### FILES:  if [[ -f file ]]    
+### CONDITIONALS SYNTAX  
+#### FILES:  
 -e file	Checks if the file exists  
 -d file	Checks if the file is a directory  
 -f file	Checks if the file is a regular file (i.e., not a symbolic link, device node, directory, etc.)  
@@ -244,20 +244,35 @@ A more general definition is:
 -r file	Checks if the file is readable  
 -w file	Checks if the file is writable  
 -x file	Checks if the file is executable  
-#### NUMERIC:  if [[ $first -eq 0 ]] && [[ $second -ne 0 ]]    
+
+Example:  
+```if [[ -f file ]]``` 
+
+#### NUMERIC:  
 -eq	Equal to    
 -ne	Not equal to    
 -gt	Greater than    
 -lt	Less than    
 -ge	Greater than or equal to    
--le	Less than or equal to    
-#### BOOL: if [[ $first -eq 0 ]] && [[ $second -ne 0 ]]    
+-le	Less than or equal to   
+
+Example:  
+```if [[ $first -eq 0 ]] && [[ $second -ne 0 ]]```  
+
+#### BOOL:   
 &&	- AND	    
 ||	- OR	    
 !	- NOT	    
-#### STRINGS: [ string1 == string2 ]    
+
+Example:  
+```if [[ $first -eq 0 ]] && [[ $second -ne 0 ]]   ```
+
+#### STRINGS:   
 ==	- EQUALS	    
-  
+
+Example:  
+```if [ string1 == string2 ] ```
+
 ### ARITHMETIC EXPRESSIONS:    
 Using the var=$((...)) syntax:    
 `echo $((x+1))`    
