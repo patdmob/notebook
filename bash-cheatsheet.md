@@ -50,7 +50,7 @@ pushd  \<path> | saves current location in stack and cd to specified
 popd   | cd to top value in pushd stack
 locate <pattern> | gives a list of paths for a given pattern
 mkdir \<directory> | make directories 
-rmdir \<direcory> | remove empty directories
+rmdir \<directory> | remove empty directories
 touch \<file> | creates an empty file or changes access and modification times
 cp    \<sourcefile> \<path> | copy file 
 mv   \<sourcefile> \<path \| name> | move or rename a file
@@ -74,25 +74,25 @@ touch myfile                # Create an empty file called myfile
 touch -t 05231600 myfile    # Sets the timestamp for myfile to 4 p.m., May 23th (05 23 1600).
 mkdir sampledir             # Creates 'sampledir' in current directory
 rm -rf                      # Forcefully and recursively delete contents from a directory
-cat file1 file2 > file3     # Concatinates contents from file1 and file2 into file3
+cat file1 file2 > file3     # Concatenates contents from file1 and file2 into file3
 cat file1 - file2           # Prints file1, prints input from stdin until EOF (`^D'), then prints file2
 ```
 
-## File/Text Manipulation  
-sed - popular stream editor used to filter/substitute text in files and data streams  
-awk   - typically used as a data extraction and reporting tool  
-sort  - sorts lines (-r for descending) (-k 3 by third field) (-u returns uniq values after sort)  
-uniq  - removes duplicate lines from text (requires consecutive duplicates) (-c for count)  
-paste - merge lines/columns of a file(s) using -d delimiters  
-join  - merge two files with similar columns without repeating the data  
-split - breaks a file into 1000 line segments  
-cut   - extract specific columns from column-based files   
-  
-## Text/Search Manipulation 
-grep    - print lines matching pattern (-v not match)(-C context above and below)  
-strings - extracts all printable content from an argument file list  
-tr      - text utility (translate)   
-wc 	- word count displays lines, words, and characters (-l lines) (-c bytes) (-w words)  
+## File/Text/Search Manipulation  
+ Command | Description 
+ --- | --- 
+sed | popular stream editor used to filter/substitute text in files and data streams  
+awk   | typically used as a data extraction and reporting tool  
+sort  | sorts lines (-r for descending) (-k 3 by third field) (-u returns uniq values after sort)  
+uniq  | removes duplicate lines from text (requires consecutive duplicates) (-c for count)  
+paste | merge lines/columns of a file(s) using -d delimiters  
+join  | merge two files with similar columns without repeating the data  
+split | breaks a file into 1000 line segments  
+cut   | extract specific columns from column-based files   
+grep    | print lines matching pattern (-v not match)(-C context above and below)  
+strings | extracts all printable content from an argument file list  
+tr      | text utility (translate)   
+wc 	| word count displays lines, words, and characters (-l lines) (-c bytes) (-w words)  
 
 ### Examples
 
@@ -103,40 +103,32 @@ echo "This   is a    test" | tr -s [:space:]    # Squeeze repetition of characte
 ```
 
 ## User Related Commands 
-sudo        - enter command as root  
-sudo -s     - change to root account (recommended over su)  
-su \<user>   - change to \<user> account  
-su - \<user> - change to \<user> account and navigate to their home directory  
-users 	    - shows active users  
-id	    - gives all pertinent information about user account  
-whoami	    - returns the current user  
-
-## Pipelines 
-|    - pipe the standard output of one command into another command's standard input  
-|&   - the stderr and stdout of cmd1 are connected to cmd2 stdin; shorthand for 2>&1 |  
-  
-  
-## Networking Related Commands 
-arp       - address resolution display and control  
-whois     - Internet domain name and network number directory service  
-dig 	  - dig	Tests DNS workings. A good replacement for host and nslookup.  
-ipconfig  - newer utility of ifconfig, may not be installed by default   
-ifconfig  - configure network interface parameters  
-ping      - send ICMP ECHO_REQUEST packets to network hosts  
-netstat   - Displays all active connections and routing tables  
-  
-## Transfering Files
-ssh	- secure shell  
-sftp	- secure file transfer  
-rsync	- efficiently transfer and sync files across computers by checking timestamp and size  
-scp	- secure copy  
-  
-
-## Web
-wget  
-curl  
-  
-Advanced bash commands:  
+ Command | Description 
+ --- | --- 
+sudo        | enter command as root  
+sudo -s     | change to root account (recommended over su)  
+su \<user>   | change to \<user> account  
+su - \<user> | change to \<user> account and navigate to their home directory  
+users 	    | shows active users  
+id	    | gives all pertinent information about user account  
+whoami	    | returns the current user  
+   
+## Networking/Transfer/Web Related Commands 
+ Command | Description 
+ --- | --- 
+arp       | address resolution display and control  
+whois     | Internet domain name and network number directory service  
+dig 	  | dig	Tests DNS workings. A good replacement for host and nslookup.  
+ipconfig  | newer utility of ifconfig, may not be installed by default   
+ifconfig  | configure network interface parameters  
+ping      | send ICMP ECHO_REQUEST packets to network hosts  
+netstat   | Displays all active connections and routing tables  
+ssh	| secure shell  
+sftp	| secure file transfer  
+rsync	| efficiently transfer and sync files across computers by checking timestamp and size  
+scp	| secure copy  
+wget  |
+curl  |
   
 ## Interaction
 read \<varname>  - requests input from the user and stores in varname  
@@ -146,38 +138,43 @@ read \<varname>  - requests input from the user and stores in varname
 ### Header
 #!/bin/bash
 
-### Symbols (need to replace this with something else)
+### Syntax
 
-\#	- Used to add a comment, except when used as \\#, or as #! when starting a script    
-\	- Used at the end of a line to indicate continuation on to the next line    
-;   - commands are executed sequentially, waiting for each to finish executing    
-&   - the shell runs the following cmd immediately in the background    
-&&  - executes the second command only if the first completes successfully    
-||  - executes the second command only if the first fails    
-$	- Indicates what follows is an environment variable    
-\>	- redirect standard output (stout) to a file    
-\>>	- append output to a file if it exists, or > if the file does not exist    
-<	- read from a file, formally known as redirect input    
-|	- Used to pipe the result into the next command    
-\#!      - shebang used at the top to tell linux where to find the executable    
-exit    - used to set the return value; 0 for success, non-zero for failure    
-echo $? - used to check the return value after a program has run     
+ Command | Description 
+ --- | --- 
+\#	| Used to add a comment, except when used as \\#, or as #! when starting a script    
+\\	| Used at the end of a line to indicate continuation on to the next line    
+;   | commands are executed sequentially, waiting for each to finish executing    
+&   | the shell runs the following cmd immediately in the background    
+&&  | executes the second command only if the first completes successfully    
+\|\|  | executes the second command only if the first fails    
+$	| Indicates what follows is an environment variable    
+\>	| redirect standard output (stout) to a file    
+\>>	| append output to a file if it exists, or > if the file does not exist    
+<	| read from a file, formally known as redirect input    
+\|    | pipe the standard output of one command into another command's standard input  
+\|&   | the stderr and stdout of cmd1 are connected to cmd2 stdin; shorthand for 2>&1 |   
+\#!      | shebang used at the top to tell linux where to find the executable    
+exit    | used to set the return value; 0 for success, non-zero for failure    
+echo $? | used to check the return value after a program has run     
   
-### SCRIPT PARAMETERS (arguments) 
-$0		- Script name    
-$1		- First parameter    
-$2, $3, etc.	- Second, third parameter, etc.    
-$*		- All parameters    
-$#		- Number of arguments    
+### Script Parameters (arguments) 
+ Command | Description 
+ --- | --- 
+$0		| Script name    
+$1		| First parameter    
+$2, $3, etc.	| Second, third parameter, etc.    
+$*		| All parameters    
+$#		| Number of arguments    
   
-### COMMAND SUBSTITUTION 
+### Command Substitution
 No matter the method, the innermost command will be executed in a newly launched shell environment, and the standard output of the shell will be inserted where the command substitution was done.    
 \`\<cmd>`     
 $(\<cmd>)     
 Both of these methods enable command substitution; however, the $( ) method allows command nesting. New scripts should always use of this more modern method.    
 ls /lib/modules/$(uname -r)/    
   
-### VARIABLES    
+### Variables   
 environment variables: HOME, PATH, HOST, etc.    
 foo=bar		# no space!    
 echo $foo    
@@ -187,17 +184,15 @@ export VAR=value
 VAR=value ; export VAR    
 export with no arguments will give a list of all currently exported environment variables    
   
-### FUNCTIONS  
-
+### Functions  
+The general syntax of a bash function is:
 ```bash
 function_name () {  
     command...  
 }  
 ```
 
-The first argument can be referred to as $1, the second as $2, etc.  
-To call a function, treat it like a new command  
-\# Functions (must be defined before use)  
+The first argument can be referred to as $1, the second as $2, etc. To call a function, simply type the function name. Functions must be defined before use.  
 
 ```bash
 func1() {  
@@ -211,7 +206,7 @@ read n
 func$n  
 ```
 
-### FLOW CONTROL  
+### Flow Control
 if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi  
 A more general definition is:  
 
@@ -235,47 +230,55 @@ echo -e "The $file does not exist"
 fi  
 ```
 
-### CONDITIONALS SYNTAX  
-#### FILES:  
--e file	Checks if the file exists  
--d file	Checks if the file is a directory  
--f file	Checks if the file is a regular file (i.e., not a symbolic link, device node, directory, etc.)  
--s file	Checks if the file is of non-zero size  
--g file	Checks if the file has sgid set  
--u file	Checks if the file has suid set  
--r file	Checks if the file is readable  
--w file	Checks if the file is writable  
--x file	Checks if the file is executable  
+### Conditional Syntax 
+#### Files:  
+ Conditional | Description 
+ --- | --- 
+-e   |	Checks if the file exists  
+-d   |	Checks if the file is a directory  
+-f   |	Checks if the file is a regular file (i.e., not a symbolic link, device node, directory, etc.)  
+-s   |	Checks if the file is of non-zero size  
+-g   |	Checks if the file has sgid set  
+-u   |	Checks if the file has suid set  
+-r   |	Checks if the file is readable  
+-w   |	Checks if the file is writable  
+-x   |	Checks if the file is executable  
 
 Example:  
 ```if [[ -f file ]]``` 
 
-#### NUMERIC:  
--eq	Equal to    
--ne	Not equal to    
--gt	Greater than    
--lt	Less than    
--ge	Greater than or equal to    
--le	Less than or equal to   
+#### Numeric: 
+ Conditional | Description 
+ --- | --- 
+-eq	 | Equal to    
+-ne	 | Not equal to    
+-gt	 | Greater than    
+-lt	 | Less than    
+-ge	 | Greater than or equal to    
+-le	 | Less than or equal to   
 
 Example:  
 ```if [[ $first -eq 0 ]] && [[ $second -ne 0 ]]```  
 
-#### BOOL:   
-&&	- AND	    
-||	- OR	    
-!	- NOT	    
+#### Boolean:    
+ Conditional | Description 
+ --- | --- 
+&&	|  AND	    
+\|\|	|  OR	    
+!	|  NOT	    
 
 Example:  
 ```if [[ $first -eq 0 ]] && [[ $second -ne 0 ]]   ```
 
-#### STRINGS:   
-==	- EQUALS	    
+#### Strings:   
+ Conditional | Description 
+ --- | --- 
+==	| EQUALS	    
 
 Example:  
 ```if [ string1 == string2 ] ```
 
-### ARITHMETIC EXPRESSIONS:    
+### Arithmetic Expressions:    
 Using the var=$((...)) syntax:    
 `echo $((x+1))`    
 Using the built-in shell command let:    
