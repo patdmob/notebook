@@ -73,7 +73,7 @@ ls ~                        # Show contents of home directory ('~' = home direct
 cd Downloads/               # Change current directory to 'Downloads'
 cd ..                       # Change to parent directory ('..' = parent, '.' = current directory)
 alias -p                    # Prints all defined aliases
-alias ls='ls -l'            # Shorthand for: ls -l
+alias ll='ls -l'            # Shorthand for: ls -l
 touch myfile                # Create an empty file called myfile
 touch -t 05231600 myfile    # Sets the timestamp for myfile to 4 p.m., May 23th (05 23 1600).
 mkdir sampledir             # Creates 'sampledir' in current directory
