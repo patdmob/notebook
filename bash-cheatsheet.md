@@ -21,8 +21,9 @@ Still a work in progress, hope to have the content complete and well formatted s
  Command | Description 
  --- | --- 
 help \<command> |  bash internal command documentation
+\<command> --help | help documentation from command (help option on Win Git Bash)
 man \<topic> |  displays the [manuel pages](http://man7.org/linux/man-pages/) (q to quit)
-info \<topic> |  GNU project's alternative to man (q to quit, h for help)
+info \<topic> |  GNU project's preferred alternative to man (q to quit, h for help)
 whatis \<command> 	| displays a short description of a command
 apropos \<keyword> | search the whatis database for strings
 which \<command>	| searches for the location of a command 
@@ -46,9 +47,10 @@ Some basic commands with common syntax. For more options see the command man or 
  --- | --- 
 ls  \<dir>   | list storage (-l list)(-a all) 
 cd \<path>    | change directory
+alias   | create an alias for a command or script
 pushd  \<path> | saves current location in stack and cd to specified
 popd   | cd to top value in pushd stack
-locate <pattern> | gives a list of paths for a given pattern
+locate \<pattern> | gives a list of paths for a given pattern
 mkdir \<directory> | make directories 
 rmdir \<directory> | remove empty directories
 touch \<file> | creates an empty file or changes access and modification times
@@ -70,6 +72,8 @@ ls -al                      # List all contents in current directory
 ls ~                        # Show contents of home directory ('~' = home directory alias)
 cd Downloads/               # Change current directory to 'Downloads'
 cd ..                       # Change to parent directory ('..' = parent, '.' = current directory)
+alias -p                    # Prints all defined aliases
+alias ls='ls -l'            # Shorthand for: ls -l
 touch myfile                # Create an empty file called myfile
 touch -t 05231600 myfile    # Sets the timestamp for myfile to 4 p.m., May 23th (05 23 1600).
 mkdir sampledir             # Creates 'sampledir' in current directory
@@ -192,7 +196,7 @@ function_name () {
 }  
 ```
 
-The first argument can be referred to as $1, the second as $2, etc. To call a function, simply type the function name. Functions must be defined before use.  
+Function arguments are position based. Within the function, the first argument can be referred to as $1, the second as $2, etc. To call a function, simply type the function name. Functions must be defined before use.
 
 ```bash
 func1() {  
